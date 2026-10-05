@@ -51,14 +51,14 @@ button:disabled{opacity:.5;cursor:not-allowed}
 <body>
 <header>
   <h1>CLAT 2027 · Fractions &amp; Decimals</h1>
-  <div><span id="timer">00:00</span></div>
+  <div><span id="timer">45:00</span></div>
 </header>
 <main>
   <section id="start" class="card center">
     <h2>Fractions &amp; Decimals Quiz</h2>
-    <p>30 multiple-choice questions across 6 sets. Suggested time: 35–40 minutes.</p>
+    <p>30 multiple-choice questions across 6 sets. Time allowed: 45 minutes.</p>
     <p><b>Marking scheme:</b> +1 for each correct answer, −0.25 for each wrong answer, 0 for unanswered. Maximum: 30 marks.</p>
-    <p>The timer starts when you press the button.</p>
+    <p>The 45-minute countdown starts when you press the button, and the quiz is submitted automatically when time runs out.</p>
     <div class="mode">
       <label><input type="radio" name="mode" value="exam" checked> Exam mode (answers shown at the end)</label>
       <label><input type="radio" name="mode" value="practice"> Practice mode (instant feedback)</label>
@@ -144,13 +144,19 @@ let idx = 0, answers = [], practice = false, submitted = false, reviewing = fals
 let startTime = 0, tick = null;
 
 function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
+const LIMIT = 45*60;
 function startTimer(){
   startTime = Date.now();
-  $('timer').textContent = '00:00';
+  $('timer').textContent = fmt(LIMIT);
   tick = setInterval(()=>{
-    const s = Math.floor((Date.now()-startTime)/1000);
-    $('timer').textContent = fmt(s);
-    $('timer').classList.toggle('warn', s >= 2400);
+    const left = Math.max(0, LIMIT - Math.floor((Date.now()-startTime)/1000));
+    $('timer').textContent = fmt(left);
+    $('timer').classList.toggle('warn', left <= 300);
+    if (left === 0){
+      alert("Time's up! Your quiz will now be submitted.");
+      submitted = true;
+      showResult(Math.min(LIMIT, stopTimer()));
+    }
   },250);
 }
 function stopTimer(){clearInterval(tick);return Math.floor((Date.now()-startTime)/1000)}
@@ -247,8 +253,7 @@ $('review').onclick = () => {
 $('restart').onclick = () => {
   $('result').classList.add('hidden');
   $('start').classList.remove('hidden');
-  $('timer').textContent = '00:00';
-  $('timer').classList.remove('warn');
+  $('timer').textContent = '45:00';
 };
 </script>
 </body>
