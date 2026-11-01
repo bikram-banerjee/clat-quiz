@@ -17,24 +17,20 @@ body{
   background:linear-gradient(145deg,#101426,#171c31 58%,#101426);
 }
 .ambient{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 50% 110%,rgba(63,57,132,.22),transparent 55%)}
-.ambient:before{content:"";position:absolute;inset:-40%;opacity:.48;background:radial-gradient(ellipse at 24% 32%,rgba(115,89,222,.27),transparent 25%),radial-gradient(ellipse at 73% 42%,rgba(20,153,165,.2),transparent 27%),radial-gradient(ellipse at 48% 72%,rgba(75,71,165,.22),transparent 31%);filter:blur(42px);animation:aurora-drift 28s ease-in-out infinite alternate}
-.ambient:after{content:"";position:absolute;inset:0;opacity:.5;background-image:radial-gradient(1.5px 1.5px at 12% 21%,rgba(220,225,255,.75) 45%,transparent 100%),radial-gradient(1px 1px at 34% 72%,rgba(170,210,255,.7) 45%,transparent 100%),radial-gradient(1.5px 1.5px at 61% 16%,rgba(220,225,255,.65) 45%,transparent 100%),radial-gradient(1px 1px at 79% 63%,rgba(185,235,255,.7) 45%,transparent 100%),radial-gradient(1px 1px at 91% 31%,rgba(220,225,255,.65) 45%,transparent 100%);background-size:380px 330px;animation:star-drift 55s linear infinite}
-.ambient-orb{position:absolute;width:34vw;height:34vw;min-width:260px;min-height:260px;border-radius:50%;filter:blur(70px);opacity:.2;animation:orb-float 22s ease-in-out infinite alternate}
-.ambient-orb.one{left:-12%;top:12%;background:#7458ed}
-.ambient-orb.two{right:-13%;top:44%;background:#13aab2;animation-delay:-9s}
-.ambient-orb.three{left:35%;bottom:-27%;background:#4544a8;animation-delay:-15s}
+.ambient:before{content:"";position:absolute;inset:-8%;opacity:.48;background:radial-gradient(ellipse at 24% 32%,rgba(115,89,222,.27),transparent 35%),radial-gradient(ellipse at 73% 42%,rgba(20,153,165,.2),transparent 37%),radial-gradient(ellipse at 48% 72%,rgba(75,71,165,.22),transparent 41%);animation:aurora-drift 38s ease-in-out infinite alternate}
+.ambient:after{content:"";position:absolute;inset:0;opacity:.4;background-image:radial-gradient(1.5px 1.5px at 12% 21%,rgba(220,225,255,.75) 45%,transparent 100%),radial-gradient(1px 1px at 34% 72%,rgba(170,210,255,.7) 45%,transparent 100%),radial-gradient(1.5px 1.5px at 61% 16%,rgba(220,225,255,.65) 45%,transparent 100%),radial-gradient(1px 1px at 79% 63%,rgba(185,235,255,.7) 45%,transparent 100%),radial-gradient(1px 1px at 91% 31%,rgba(220,225,255,.65) 45%,transparent 100%);background-size:380px 330px}
 header{
   position:sticky;top:0;z-index:5;padding:13px max(20px,calc((100vw - 1120px)/2));
   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
   color:#fff;background:linear-gradient(110deg,#5d4ab7,#7664d3 65%,#3f879c);
-  box-shadow:0 8px 28px color-mix(in srgb,var(--pri),transparent 78%);backdrop-filter:blur(14px)
+  box-shadow:0 8px 28px color-mix(in srgb,var(--pri),transparent 78%)
 }
 header h1{font-size:1.05rem;margin:0;letter-spacing:.01em}
 .head-tools{display:flex;align-items:center;gap:12px}
 #timer{font-size:1.2rem;font-variant-numeric:tabular-nums;font-weight:700;letter-spacing:.04em;padding:6px 12px;border-radius:10px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.24)}
 #timer.warn{color:#ffe0e4;background:rgba(151,21,55,.3)}
 main{position:relative;z-index:1;max-width:920px;margin:34px auto;padding:0 18px 40px}
-.card{position:relative;overflow:hidden;background:var(--card);border:1px solid color-mix(in srgb,var(--border),transparent 6%);border-radius:20px;padding:30px;box-shadow:var(--shadow);margin-bottom:20px;backdrop-filter:blur(14px);animation:card-in .45s both}
+.card{position:relative;overflow:hidden;background:var(--card);border:1px solid color-mix(in srgb,var(--border),transparent 6%);border-radius:20px;padding:30px;box-shadow:var(--shadow);margin-bottom:20px;animation:card-in .45s both}
 #start{padding:42px 38px}
 #start:before{content:"";position:absolute;inset:0 0 auto;height:6px;background:linear-gradient(90deg,#8571f1,#5fcbd0,#a998ff)}
 #start h2{font-size:clamp(1.55rem,4vw,2.1rem);letter-spacing:-.035em;margin:12px 0 9px}
@@ -77,8 +73,6 @@ th,td{padding:10px 14px;border-bottom:1px solid var(--border);text-align:left}th
 .rules li{margin:5px 0;padding-left:3px}
 @keyframes card-in{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
 @keyframes aurora-drift{0%{transform:translate3d(-3%,-2%,0) rotate(-5deg) scale(1)}100%{transform:translate3d(4%,3%,0) rotate(7deg) scale(1.08)}}
-@keyframes orb-float{0%{transform:translate3d(-8%,3%,0) scale(.92)}100%{transform:translate3d(12%,-10%,0) scale(1.12)}}
-@keyframes star-drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-80px,50px,0)}}
 @media(max-width:600px){
   header{padding:11px 14px}.head-tools{width:100%;justify-content:flex-end}
   main{margin:18px auto;padding:0 12px 28px}
@@ -90,11 +84,7 @@ th,td{padding:10px 14px;border-bottom:1px solid var(--border);text-align:left}th
 </style>
 </head>
 <body>
-<div class="ambient" aria-hidden="true">
-  <span class="ambient-orb one"></span>
-  <span class="ambient-orb two"></span>
-  <span class="ambient-orb three"></span>
-</div>
+<div class="ambient" aria-hidden="true"></div>
 <header>
   <h1>CLAT UG Practice Paper 2</h1>
   <div class="head-tools">
@@ -158,6 +148,8 @@ const LIMIT = 120*60;
 const KEY = 'clatPaperState_v5';
 const $ = id => document.getElementById(id);
 let idx = 0, answers = [], practice = false, reviewing = false;
+let gridButtons = [];
+let gridBuilt = false;
 let startTime = 0, tick = null, finalTime = 0;
 
 function fmt(s){
@@ -180,7 +172,7 @@ function startTimer(){
       alert("Time's up! Your paper will now be submitted.");
       showResult(LIMIT);
     }
-  },250);
+  },1000);
 }
 function stopTimer(){clearInterval(tick);return Math.min(LIMIT, Math.floor((Date.now()-startTime)/1000))}
 
@@ -238,24 +230,44 @@ function render(){
   $('count').textContent = `Answered: ${answers.filter(a=>a!==null).length}/${DATA.qs.length}`;
   $('finish').textContent = reviewing ? 'Back to Results' : 'Submit Paper';
   buildGrid();
+  updateGrid();
 }
 
 function buildGrid(){
-  const g = $('grid'); g.innerHTML = '';
+  if (gridBuilt) return;
+  const g = $('grid');
+  const content = document.createDocumentFragment();
+  gridButtons = Array(DATA.qs.length);
   DATA.secs.forEach((s,si)=>{
-    const h = document.createElement('div'); h.className = 'nsec'; h.textContent = s.name; g.appendChild(h);
+    const h = document.createElement('div'); h.className = 'nsec'; h.textContent = s.name; content.appendChild(h);
     const row = document.createElement('div'); row.className = 'grid';
     DATA.qs.forEach((qq,i)=>{
       if (qq.sec !== si) return;
       const b = document.createElement('button');
       b.textContent = qq.n;
-      if (reviewing) b.classList.add(answers[i]===null ? 'skip' : answers[i]===qq.a ? 'ok' : 'bad');
-      else if (answers[i] !== null) b.classList.add('done');
-      if (i === idx) b.classList.add('cur');
-      b.onclick = () => { idx = i; save(); render(); window.scrollTo({top:0,behavior:'auto'}); };
+      b.dataset.index = i;
+      gridButtons[i] = b;
       row.appendChild(b);
     });
-    g.appendChild(row);
+    content.appendChild(row);
+  });
+  g.appendChild(content);
+  g.onclick = event => {
+    const button = event.target.closest('button[data-index]');
+    if (!button) return;
+    idx = Number(button.dataset.index);
+    save(); render(); window.scrollTo({top:0,behavior:'auto'});
+  };
+  gridBuilt = true;
+}
+
+function updateGrid(){
+  gridButtons.forEach((button,i)=>{
+    const classes = [];
+    if (reviewing) classes.push(answers[i]===null ? 'skip' : answers[i]===DATA.qs[i].a ? 'ok' : 'bad');
+    else if (answers[i] !== null) classes.push('done');
+    if (i === idx) classes.push('cur');
+    button.className = classes.join(' ');
   });
 }
 
